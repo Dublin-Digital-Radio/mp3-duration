@@ -12,17 +12,19 @@ $ npm install --save mp3-duration
 ## Usage
 
 ```javascript
-var mp3Duration = require('mp3-duration');
+import mp3Duration = from 'mp3-duration';
 
-mp3Duration('file.mp3', function (err, duration) {
-  if (err) return console.log(err.message);
+try {
+  const duration = await mp3Duration('file.mp3');
   console.log('Your file is ' + duration + ' seconds long');
-});
+} catch (err) {
+  console.log(err.message);
+}
 ```
 
 ## API
 
-## mp3Duration(filePathOrBuffer [, cbrEstimate] [, callback])
+## mp3Duration(filePathOrBuffer [, cbrEstimate])
 
 ### filePathOrBuffer
 
@@ -36,17 +38,10 @@ Defaults to `false`. When set to `true`, will estimate the length of a
 constant-bitrate mp3. This speeds up the calculation a lot but isn't
 guaranteed to be accurate.
 
-### callback(error, duration)
-
-Type: `function`
-
-Callback to be called once duration is calculated. It's also possible to
-instead use the returned `Promise`. `duration` is the duration of the
-mp3 in `seconds` (including fractional seconds).
 
 ### Return value
 
-`mp3Duration` returns a Promise that resolves to the duration of the mp3 in `seconds` or rejects with some error.
+`duration` is the duration of the mp3 in `seconds` (including fractional seconds).
 
 ## License
 
