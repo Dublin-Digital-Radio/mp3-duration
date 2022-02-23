@@ -189,7 +189,6 @@ async function mp3Duration(filename, cbrEstimate) {
         return round(estimateDuration(info.bitRate, offset, stat.size));
     }
 
-    console.log(`DURATION : ${round(duration)}`);
     return round(duration);
   } finally {
     if (!srcBuffer) await fd.close();
@@ -197,5 +196,3 @@ async function mp3Duration(filename, cbrEstimate) {
 }
 
 export default mp3Duration;
-
-//await mp3Duration(process.argv[2]);
